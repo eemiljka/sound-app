@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {MediaItem} from '../types/DBtypes';
+import {MediaItem} from '../types/DBTypes';
 import MediaRow from './MediaRow';
 
 const Home = () => {
@@ -40,8 +40,7 @@ const Home = () => {
       created_at: '2024-01-07T20:48:13.000Z',
     },
   ];
-
-  //  console.log(mediaArray);
+  //console.log(mediaArray);
 
   return (
     <>
@@ -59,15 +58,13 @@ const Home = () => {
           </tr>
         </thead>
         <tbody>
-          {mediaArray.map((item) => {
-            return (
-              <MediaRow
-                key={item.media_id}
-                mediaItem={item}
-                setSelectedItem={setSelectedItem}
-              />
-            );
-          })}
+          {mediaArray.map((item) => (
+            <MediaRow
+              key={item.media_id}
+              item={item}
+              setSelectedItem={setSelectedItem}
+            />
+          ))}
         </tbody>
       </table>
     </>
