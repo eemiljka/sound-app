@@ -1,4 +1,4 @@
-import {MediaItem} from '../types/DBtypes';
+import {MediaItem} from '../types/DBTypes';
 
 const MediaRow = (props: {
   item: MediaItem;
