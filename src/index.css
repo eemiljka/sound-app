@@ -3,9 +3,11 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  --lightblue: #BBDEF0;
+  --blue: #151E3F;
+  --darkblue: #030027;
+  --green: #519872;
+  --gray: #637074;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -14,9 +16,9 @@
 }
 
 #root {
-  max-width: 1280px;
+  max-width: auto;
   margin: 0 auto;
-  padding: 2rem;
+  background-color: var(--blue);
 }
 
 /* nav */
@@ -25,21 +27,42 @@ nav ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333333;
+  background-color: var(--darkblue);
   display: flex;
   justify-content: flex-end;
+  position: relative;
+}
+
+.nav-left {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nav-right {
+  display: flex;
+  gap: 1rem;
 }
 
 nav a {
   display: block;
-  color: white;
+  color: var(--lightblue);
   text-align: center;
   padding: 1rem;
   text-decoration: none;
 }
 
 nav a:hover {
-  background-color: #111111;
+  background-color: var(--blue);
+}
+
+/*TEXT*/
+p {
+  color: var(--gray);
+}
+
+tr {
+  color: var(--lightblue);
 }
 
 /* media item card */
@@ -55,13 +78,13 @@ td img {
 
 td button:hover,
 a:hover {
-  background-color: #111111;
+  background-color: var(--darkblue);
 }
 
 td a {
   color: white;
   text-decoration: none;
-  background-color: #363636;
+  background-color: var(--gray);
   color: white;
   border: none;
   padding: 0.5rem;

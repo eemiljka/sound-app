@@ -1,20 +1,23 @@
 import {Link, Outlet} from 'react-router-dom';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faUser, faUpload} from '@fortawesome/free-solid-svg-icons';
 
 const Layout = () => {
   return (
     <>
       <header>
-        <h1>My app</h1>
         <nav>
           <ul>
-            <li>
-              <Link to="/">Home</Link>
+            <li className="nav-left">
+              <Link to="/">SoundHub</Link>
             </li>
-            <li>
-              <Link to="/profile">Profile</Link>
-            </li>
-            <li>
-              <Link to="/upload">Upload</Link>
+            <li className="nav-right">
+              <Link to="/profile">
+                <FontAwesomeIcon icon={faUser} />
+              </Link>
+              <Link to="/upload">
+                <FontAwesomeIcon icon={faUpload} />
+              </Link>
             </li>
           </ul>
         </nav>
@@ -23,7 +26,7 @@ const Layout = () => {
         <Outlet />
       </main>
       <footer>
-        <p>Copyright 2024 - NN</p>
+        <p>Copyright 2024 - E.K</p>
       </footer>
     </>
   );

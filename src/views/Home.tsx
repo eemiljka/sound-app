@@ -34,7 +34,6 @@ const Home = () => {
 
   return (
     <>
-      <h2>My Media</h2>
       <table>
         <thead>
           <tr>
