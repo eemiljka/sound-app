@@ -1,48 +1,24 @@
-import {useEffect, useState} from 'react';
 import MediaRow from '../components/MediaRow';
-import {MediaItem, MediaItemWithOwner} from '../types/DBTypes';
-import {fetchData} from '../lib/functions';
+import {useMedia} from '../hooks/graphQLHooks';
+// import {useMedia} from '../hooks/apiHooks';
 
 const Home = () => {
-  const [mediaArray, setMediaArray] = useState<MediaItem[]>([]);
-  const getMedia = async () => {
-    try {
-      const data = await fetchData<MediaItem>(
-        import.meta.env.VITE_MEDIA_API + '/media',
-      );
-
-      const dataWithOwner: MediaItemWithOwner = await Promise.all(
-        data.map((item) => {
-          const username = fetchData(
-            import.meta.env.VITE_AUTH_API + '/users/' + item.user_id,
-          );
-          const ItemWithOwner: MediaItemWithOwner = {username, ...item};
-          // TODO: fix this  !!!
-        }),
-      );
-
-      setMediaArray(data);
-      console.log(data);
-    } catch (error) {
-      console.error('getMedia failed', error);
-    }
-  };
-
-  useEffect(() => {
-    getMedia();
-  }, []);
+  const {mediaArray} = useMedia();
 
   return (
     <>
+      <h2>My Media</h2>
       <table>
         <thead>
           <tr>
-            <th>Thumbnail</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Created</th>
-            <th>Size</th>
-            <th>Type</th>
+            <th className="w-3/12 border border-slate-700">Thumbnail</th>
+            <th className="w-1/12 border border-slate-700">Title</th>
+            <th className="w-2/12 border border-slate-700">Description</th>
+            <th className="w-1/12 border border-slate-700">Created</th>
+            <th className="w-1/12 border border-slate-700">Size</th>
+            <th className="w-1/12 border border-slate-700">Type</th>
+            <th className="w-1/12 border border-slate-700">Owner</th>
+            <th className="w-2/12 border border-slate-700">Actions</th>
           </tr>
         </thead>
         <tbody>
